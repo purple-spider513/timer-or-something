@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Countdown Until I'm Finally Free!</title>
+    <style>
+        body {
+            background-color : rgb(44, 44, 44);
+        }
+        p {
+            color : rgb(255, 255, 255);
+            font-size: medium;
+        }
+        h1 {
+            color : rgb(255, 255, 255);
+        }
+    </style>
+    <script>
+      // Function to calculate the time remaining
+      function calculateCountdown() {
+        // Target date: May 13, 2041
+        var targetDate = new Date("May 13, 2041 00:00:00").getTime();
+
+        // Get the current date and time
+        var now = new Date().getTime();
+
+        // Calculate the time remaining
+        var timeRemaining = targetDate - now;
+
+        // Calculate the number of years, months, days, hours, minutes, and seconds
+        var years = Math.floor(timeRemaining / (1000 * 60 * 60 * 24 * 365));
+        var months = Math.floor(
+          (timeRemaining % (1000 * 60 * 60 * 24 * 365)) /
+            (1000 * 60 * 60 * 24 * 30)
+        );
+        var days = Math.floor(
+          (timeRemaining % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)
+        );
+        var hours = Math.floor(
+          (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        var minutes = Math.floor(
+          (timeRemaining % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+        // Display the time remaining in the HTML elements
+        document.getElementById("years").innerHTML = years;
+        document.getElementById("months").innerHTML = months;
+        document.getElementById("days").innerHTML = days;
+        document.getElementById("hours").innerHTML = hours;
+        document.getElementById("minutes").innerHTML = minutes;
+        document.getElementById("seconds").innerHTML = seconds;
+      }
+
+      // Update the countdown every second
+      setInterval(calculateCountdown, 1000);
+    </script>
+  </head>
+  <body>
+    <h1>Countdown Until I'm Finally Free!</h1>
+    <p>There is <span id="years"></span> years, <span id="months"></span> months, <span id="days"></span> days, <span id="hours"></span> hours, <span id="minutes"></span> minutes, and <span id="seconds"></span> seconds until I am free from studying!</p>
+  </body>
+</html>
